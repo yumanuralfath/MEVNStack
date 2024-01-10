@@ -15,13 +15,20 @@
   <body class="">
     <div class="container" id="app">
       <div class="form-inline mr-auto">
-        <label for="" class="font-weight-bold mr-2"> MAX </label>
+        <label for="" class="font-weight-bold mr-2"> <h2>Max Price</h2> </label>
         <input type="number" class="form-control w-25" v-model="maximum" />
+        <input
+          type="range"
+          class="custom-range"
+          min="0"
+          max="1000"
+          v-model="maximum"
+        />
       </div>
       <div
         class="row d-flex mb-3 align-items-center"
         v-for="item in products"
-        v-if="item.price < Number(maximum)"
+        v-if="item.price <= Number(maximum)"
       >
         <div class="col-sm-4">
           <img

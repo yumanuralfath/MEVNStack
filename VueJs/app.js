@@ -1,5 +1,5 @@
 var dataProduct = {
-  maximum: 500,
+  maximum: 0,
   products: [
     {
       name: 'Bamboo Thermal ski coat',
@@ -19,14 +19,14 @@ var dataProduct = {
       name: 'Action Figure Anime',
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim alias, dicta placeat dignissimos autem rerum cupiditate maxime, unde voluptates nemo magni libero eum reiciendis, eligendi suscipit ullam quam minima incidunt!',
-      price: '400',
+      price: '600',
       image: 'https://source.unsplash.com/360x200?Action+Figure',
     },
     {
       name: 'Anime',
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim alias, dicta placeat dignissimos autem rerum cupiditate maxime, unde voluptates nemo magni libero eum reiciendis, eligendi suscipit ullam quam minima incidunt!',
-      price: '220',
+      price: '720',
       image: 'https://source.unsplash.com/360x200?Anime',
     },
     {
@@ -40,21 +40,21 @@ var dataProduct = {
       name: 'Orange Juice',
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim alias, dicta placeat dignissimos autem rerum cupiditate maxime, unde voluptates nemo magni libero eum reiciendis, eligendi suscipit ullam quam minima incidunt!',
-      price: '40',
+      price: '300',
       image: 'https://source.unsplash.com/360x200?Juice',
     },
     {
       name: 'Bakso',
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim alias, dicta placeat dignissimos autem rerum cupiditate maxime, unde voluptates nemo magni libero eum reiciendis, eligendi suscipit ullam quam minima incidunt!',
-      price: '23',
+      price: '230',
       image: 'https://source.unsplash.com/360x200?meatball',
     },
     {
       name: 'Laptop',
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim alias, dicta placeat dignissimos autem rerum cupiditate maxime, unde voluptates nemo magni libero eum reiciendis, eligendi suscipit ullam quam minima incidunt!',
-      price: '400',
+      price: '900',
       image: 'https://source.unsplash.com/360x200?laptop',
     },
     {
