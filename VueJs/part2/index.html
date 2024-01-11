@@ -14,6 +14,18 @@
 
   <body class="">
     <div class="container" id="app">
+      <nav class="navbar navbar-light bg-light">
+        <div class="navbar-text ml-auto position-absolute top-0 end-0 p-3">
+          <button type="button" class="btn btn-primary position-relative">
+            cart
+            <span
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success"
+            >
+              {{cart.length}}
+            </span>
+          </button>
+        </div>
+      </nav>
       <div class="form-inline mr-auto">
         <label for="" class="font-weight-bold mr-2"> <h2>Max Price</h2> </label>
         <input type="number" class="form-control w-25" v-model="maximum" />
@@ -21,7 +33,7 @@
           type="range"
           class="custom-range"
           min="0"
-          max="200"
+          max="130"
           v-model="maximum"
         />
       </div>
@@ -30,6 +42,9 @@
         v-for="item in products"
         v-if="item.price <= Number(maximum)"
       >
+        <div class="col-1 m-auto">
+          <button class="btn btn-info" v-on:click="addItem(item)">+</button>
+        </div>
         <div class="col-sm-4">
           <img
             :src="item.image"
