@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="app.css" />
+    <title>Belajar VueJS2</title>
+  </head>
+
+  <body class="">
+    <div class="container" id="app">
+      <nav class="navbar navbar-light bg-light fixed-top">
+        <div>
+          <h1 class="mt-5">Alfath Shop</h1>
+          <transition
+            name="custom"
+            enter-active-class="animate__animated animate__fadeInDown"
+            leave-active-class="animate__animated animate__fadeOutDown"
+          >
+            <div v-if="style.sliderStatus">
+              <div class="align-items-center" :class="sliderState">
+                <label for="" :class="style.label">
+                  <h2>Max Price</h2>
+                </label>
+                <input
+                  type="number"
+                  class="form-control mx-3"
+                  :style="{'width': style.inputWidth + 'px', 'text-align': 'center'}"
+                  v-model="maximum"
+                />
+                <input
+                  type="range"
+                  class="custom-range"
+                  min="0"
+                  max="1000"
+                  v-model="maximum"
+                />
+              </div>
+            </div>
+          </transition>
+        </div>
+        <div class="navbar-text d-flex justify-content-between pe-5 w-100">
+          <div class="ml-2">
+            <button
+              class="btn btn-success btn-sm dropdown-toggle"
+              id="dropDownCart"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <b>Cart:</b>
+              <span
+                class="position-absolute top-50 start-100 translate-middle badge rounded-pill bg-success"
+              >
+                {{cart.length}}
+              </span>
+            </button>
+            <div
+              class="dropdown-menu dropdown-menu-right"
+              aria-labelledby="dropDownCart"
+            >
+              <div v-for="(item, index) in cart" :key="index">
+                <div class="dropdown-item text-nowrap text-right">
+                  <span
+                    class="badge badge-pill badge-warning align-text-top mr-1"
+                  >
+                    {{item.qty}}
+                  </span>
+                  {{item.name}}
+                  <b>{{item.price | currencyFormat}} </b>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="btn btn-sm btn-outline-success ms-auto"
+            @click="style.sliderStatus = !style.sliderStatus"
+          >
+            <i class="fas fa-dollar-sign"></i>
+          </button>
+        </div>
+      </nav>
+      <br />
+
+      <transition-group
+        name="fade"
+        tag="div"
+        @before-enter="before"
+        @enter="enter"
+        @leave="leave"
+      >
+        <div
+          class="row d-flex mb-3 align-items-center"
+          v-for="(item, index) in products"
+          :key="item.id"
+          v-if="item.price <= Number(maximum)"
+          :data-index="index"
+        >
+          <div class="col-1 m-auto">
+            <button class="btn btn-info" v-on:click="addItem(item)">+</button>
+          </div>
+          <div class="col-sm-4">
+            <img
+              :src="item.image"
+              v-bind:alt="item.name"
+              class="img-fluid mt-5"
+            />
+          </div>
+          <div class="col">
+            <h2 class="text-info">{{ item.title }}</h2>
+            <p class="mb-0">{{item.description}}</p>
+            <div class="h5 float-md-end">{{ item.price | currencyFormat }}</div>
+          </div>
+        </div>
+      </transition-group>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+      integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
